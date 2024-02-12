@@ -50,7 +50,7 @@ struct AppView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50,height: 50)
                     }
-                    
+                      
                 }
             }
             
