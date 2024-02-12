@@ -6,3 +6,10 @@
 //
 
 import Foundation
+struct AppItems:Identifiable{
+    var id:UUID=UUID()
+    var name:String
+    var comment:String
+    var imagename:String
+    
+}
