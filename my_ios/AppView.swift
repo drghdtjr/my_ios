@@ -18,44 +18,64 @@ struct AppView: View {
 
     
     var body: some View {
-        ZStack{
-            Color(UIColor.black)
-                .ignoresSafeArea()
-            VStack{
-                HStack{
-                    Text("투데이")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .bold()
-                        .foregroundColor(.white)
-                    Text("2월 12일")
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Image("hs")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height:40)
-                }
-                Image("first")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(15)
-                Image("second")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(15)
-                List(Apps){item in
+        ScrollView{
+            ZStack{
+                Color(UIColor.black)
+                    .ignoresSafeArea()
+                VStack{
                     HStack{
-                        Image(item.imagename)
+                        Text("투데이")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .bold()
+                            .foregroundColor(.white)
+                        Text("2월 12일")
+                            .foregroundColor(.gray)
+                        Spacer()
+                        Image("hs")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 50,height: 50)
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height:40)
                     }
-                      
+                    Image("first")
+                        .resizable()
+                        
+                        .cornerRadius(15)
+                    Image("second")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
+                    List(Apps){item in
+                        AppItemrow(item:item)
+                        
+                    }
                 }
+                
             }
+        }
+    }
+}
+struct AppItemrow:View{
+    var item:AppItems
+    var body:some View{
+        HStack{
+            Image(item.imagename)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 50)
+            VStack(alignment: .leading) {
+                    Text(item.name)
+                            .font(.headline)
+                    Text(item.comment)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+            }
+            Spacer()
+            
+            Text("받기")
             
         }
         
+        .padding()
     }
 }
 
